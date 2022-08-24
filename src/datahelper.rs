@@ -21,11 +21,11 @@ pub async fn get_session_data(input: BussinessInput, dao: &mut MySqlDao) -> Sess
                     Err(e) => error!("\nParsing session_data: {} {}", e, _data),
                 },
                 None => {
-                    warn!("\nsession_data not found {:?}", extras)
+                    debug!("\nsession_data not found {:?}", extras)
                 }
             },
             None => {
-                error!("\nextras not found")
+                debug!("\nextras not found")
             }
         }
     } else {
@@ -150,7 +150,7 @@ pub fn get_user_data(input: BussinessInput, dao: &mut MySqlDao) -> UserData {
                 data.last_question_type = last_question_type;
             }
             None => {
-                warn!("\nUser data not found")
+                debug!("\nUser data not found")
             }
         },
         Err(e) => error!("\n{}", e),
@@ -198,7 +198,6 @@ pub fn save_session_data(
     dao: &mut MySqlDao,
 ) {
     if input.request_type == "ALEXA".to_string() {
-        println!("\nALEXA");
         let mut command =
             ResponseCommand::new(ResponseCommandType::SetSessionAttribute.to_string());
         let mut value: HashMap<String, JsonValue> = HashMap::new();
@@ -251,15 +250,15 @@ pub fn save_session_data(
                 }
                 match dao.conn.query_drop::<&str>(&query) {
                     Ok(()) => {
-                        info!("\nuserdata saved successfully");
+                        info!("\nsessiondata saved successfully");
                     }
                     Err(e) => {
-                        error!("\nsave_user_data: {}", e);
+                        error!("\nsessiondata: {}", e);
                     }
                 }
             }
             Err(e) => {
-                error!("\nsave_user_data: {}", e);
+                error!("\nsessiondata: {}", e);
             }
         }
     }

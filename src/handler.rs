@@ -33,6 +33,6 @@ pub async fn bussiness_handler(input: BussinessInput, mut dao: MySqlDao) -> Buss
     let mut _resp = action_handler(input.clone(), &session_data, &user_data);
     save_user_data(input.clone(), &mut _resp, user_data, &mut dao);
     save_session_data(input.clone(), &mut _resp, session_data, &mut dao);
-    println!("\n{:?}", _resp);
+    debug!("\n{:?}", _resp);
     _resp
 }

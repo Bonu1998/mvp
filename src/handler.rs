@@ -1,5 +1,5 @@
-use flair_alexa_wrapper::io::{BussinessInput, BussinessOutput};
 use flair_general_utils::dao::MySqlDao;
+use flair_types::skill::io::{BussinessOutput, BussinessInput};
 use log::{debug, info};
 
 use crate::{

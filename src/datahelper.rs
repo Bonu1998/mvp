@@ -1,10 +1,8 @@
 use std::{collections::HashMap, env};
-
-use flair_alexa_wrapper::io::{
+use flair_general_utils::{dao::MySqlDao, file_fetch::get_data};
+use flair_types::skill::io::{
     BussinessInput, BussinessOutput, ResponseCommand, ResponseCommandType,
 };
-use flair_general_utils::{dao::MySqlDao, file_fetch::get_data};
-
 use log::{debug, error, info, warn};
 use mysql::prelude::Queryable;
 use serde_json::{json, Value as JsonValue};

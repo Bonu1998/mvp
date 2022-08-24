@@ -1,0 +1,15 @@
+[package]
+name = "mvp"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+flair_alexa_wrapper = { git = "https://github.com/Bonu1998/flair_alexa_wrapper.git", branch = "latest" }
+flair_general_utils = { git = "https://github.com/Bonu1998/flair_general_utils.git", branch = "latest" }
+
+log = { version = "0.4.1" }
+serde = { version = "1.0.139", features = ["derive"] }
+serde_json = { version = "1.0.82" }
+mysql = "22.2.0"
